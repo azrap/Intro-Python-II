@@ -10,6 +10,12 @@ class Room:
         self.s_to = None
         self.e_to = None
         self.w_to = None
+        self.items = []
 
     def __str__(self):
         return f"Name: {self.name}, Description: {self.description}"
+
+    def room_items(self):
+        print("The items in this room are: ")
+        for a in self.items:
+            print(a.name)

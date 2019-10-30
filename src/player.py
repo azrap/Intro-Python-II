@@ -15,8 +15,9 @@ class Player:
         Items: {self.items}'''
 
     def player_items(self):
-        print("The items you have are: ")
         if len(self.items) == 0:
             print("you don't have any items")
-        for a in self.items:
-            print(a.name)
+        else:
+            print("The items you have are: ")
+            for a in self.items:
+                print(a.name)

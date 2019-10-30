@@ -49,6 +49,7 @@ player = Player("Azra", room['outside'])
 player.items.append(item['food'])
 
 
+# Helper Functions
 def room_swapper(room, direction):
     new_room = getattr(room, f"{direction}_to")
     if new_room is None:
@@ -59,7 +60,7 @@ def room_swapper(room, direction):
         return new_room
 
 
-def take(item_list, item_name, player, room):
+def take_item(item_list, item_name, player, room):
     if item_list[item_name] in room.items:
         player.items.append(item_list[item_name])
         room.items.remove(item_list[item_name])
@@ -67,7 +68,7 @@ def take(item_list, item_name, player, room):
         print(f'{item_name} does not exist in {room.name}\n')
 
 
-def drop(item_list, item_name, player, room):
+def drop_item(item_list, item_name, player, room):
     if item_list[item_name] in player.items:
         player.items.remove(item_list[item_name])
         room.items.append(item_list[item_name])
@@ -95,7 +96,6 @@ while q is False:
     (q) to quit the game
         ''')
     command = command.lower().strip()
-
     if command is None:
         print("No options were selected, please try again")
     elif command[0] in ["n", "s", "e", "w"]:
@@ -105,18 +105,15 @@ while q is False:
     elif command[0:4] == "take":
         try:
             item_name = command.split(" ")[1]
-            take(item, item_name, player, player.room)
+            take_item(item, item_name, player, player.room)
         except IndexError:
             print('Invalid input. Please try again')
     elif command[0:4] == "drop":
         try:
             item_name = command.split(" ")[1]
-            drop(item, item_name, player, player.room)
+            drop_item(item, item_name, player, player.room)
         except IndexError:
             print('Invalid input. Please try again')
-
-        # work through edge cases of submissions
-
     elif command == "q":
         print("thank you for playing, good bye")
         q = True

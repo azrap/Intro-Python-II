@@ -16,6 +16,9 @@ class Room:
         return f"Name: {self.name}, Description: {self.description}"
 
     def room_items(self):
-        print("The items in this room are: ")
-        for a in self.items:
-            print(a.name)
+        if len(self.items) == 0:
+            print("this room doesn't have any items")
+        else:
+            print("The items in this room are: ")
+            for a in self.items:
+                print(a.name)

@@ -106,13 +106,13 @@ while q is False:
         try:
             item_name = command.split(" ")[1]
             take_item(item, item_name, player, player.room)
-        except IndexError:
+        except (KeyError or IndexError):
             print('Invalid input. Please try again')
     elif command[0:4] == "drop":
         try:
             item_name = command.split(" ")[1]
             drop_item(item, item_name, player, player.room)
-        except IndexError:
+        except (KeyError or IndexError):
             print('Invalid input. Please try again')
     elif command == "q":
         print("thank you for playing, good bye")
